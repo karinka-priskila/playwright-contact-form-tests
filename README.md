@@ -112,6 +112,36 @@ playwright-contact-form-tests/
 - **`.gitignore`**: Excludes generated files, installed dependencies, and environment files from version control.
 - **`README.md`**: Documents the project setup, execution instructions, framework structure, and future improvements.
 
+## Framework Design Decisions
+
+1. **Playwright Test Runner**
+
+   The built-in Playwright Test Runner is used for test execution, assertions, and test fixtures. This keeps the framework lightweight without introducing unnecessary dependencies.
+
+2. **Positive and Negative Testing**
+
+   Both positive and negative scenarios are included to verify the expected behavior of the contact form with valid and missing input data.
+
+3. **UI and API Validation**
+
+   The tests validate both the user interface and the API response. This provides additional confidence that the form behaves correctly from the user's perspective and that the backend returns the expected result.
+
+4. **Reusable URL Constants**
+
+   The base URL and API endpoint are defined as constants to avoid repeating URLs throughout the test file and make future updates easier.
+
+5. **Explicit Response Waiting**
+   
+   The tests wait for the relevant POST API response before asserting the status code and response body. This helps synchronize the test with the application's network activity.
+
+6. **Order-Independent Validation Assertions**
+
+   The negative test checks that all expected validation messages are present without relying on their response order. This makes the assertions less dependent on how the backend orders its validation errors.
+
+7. **Readable Test Structure**
+
+   The test cases use descriptive names and clear assertions so that the scenarios are easy to understand, review, and maintain.
+
 ## Potential Improvements
 
 With additional time, I would improve the framework in the following areas:
